@@ -1,0 +1,34 @@
+.siteHeader, .siteFooter { 
+  align-items: center; 
+  border-bottom: 1px solid var(--ink); 
+  display: flex; 
+  justify-content: space-between; 
+  margin: auto; 
+  max-width: 90rem; 
+  padding: 1.25rem 3.5rem; 
+}
+
+.wordmark { 
+    align-items: center; 
+    display: inline-flex; 
+    font: 1.35rem/1 var(--serif); 
+    gap: .65rem; 
+    text-decoration: none; 
+}
+
+.nav { 
+  align-items: center; 
+  display: flex; 
+  gap: 2rem; 
+}
+
+.navLink { 
+  align-items: center; 
+  display: inline-flex; 
+  font-size: .9rem; 
+  text-decoration: none; 
+}
+
+.navLink:hover { 
+  text-decoration: underline; 
+}
