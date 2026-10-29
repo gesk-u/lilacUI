@@ -1,6 +1,6 @@
 /* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Libre+Caslon+Text:ital@0;1&display=swap');
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital@0;1&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono&display=swap");
+@import "tailwindcss";
 
 :root {
   --paper: #f3eff8;
@@ -16,17 +16,21 @@
   --selected: #e2d7f3;
   --stem: #5f6b4c;
   --leaf: #a9b391;
-  --serif: 'Libre Caslon Text', Georgia, serif;
-  --sans: 'Figtree', sans-serif;
-  --mono: 'IBM Plex Mono', monospace;
+
+  --site-font-display: "Libre Caslon Display", "Libre Caslon Text", Georgia, "Times New Roman", serif;
+  --site-font-serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+  --site-font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --site-font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 @layer base {
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--paper); color: var(--body); font: 400 1rem/1.5 var(--sans); margin: 0; }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  body { background: var(--paper); color: var(--body); font: 400 1rem/1.5 var(--site-font-sans); margin: 0; }
   h1, h2, h3, p { margin-top: 0; }
-  h1, h2, h3 { color: var(--ink); font-family: var(--serif); font-weight: 400; }
+  h1, h2, h3 { color: var(--ink); font-family: var(--site-font-serif); font-weight: 400; }
   a { color: var(--ink); text-underline-offset: .25em; }
   button, input, a { -webkit-tap-highlight-color: transparent; }
   button, a, input { min-height: 2.75rem; }

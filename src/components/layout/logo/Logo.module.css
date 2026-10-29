@@ -1,0 +1,89 @@
+/*
+ * Only the ink changes between themes. The petals hold their values, because
+ * two of them are already light and two already dark, so they read on either
+ * background. A dark ink line disappears against a dark page, so dark mode
+ * gets a light violet instead.
+ *
+ * Every token falls back through a --lilac-color-* name first, so your
+ * tokens.css can take these over without touching this file.
+ */
+.mark,
+.lockup {
+  --lilac-logo-ink: var(--lilac-color-logo-ink, #2a1d45);
+  --lilac-logo-petal-1: var(--lilac-color-violet-700, #4b3478);
+  --lilac-logo-petal-2: var(--lilac-color-violet-400, #6f58a3);
+  --lilac-logo-petal-3: var(--lilac-color-violet-200, #bca9de);
+  --lilac-logo-petal-4: var(--lilac-color-violet-50, #fdfbff);
+  --lilac-logo-eye: var(--lilac-color-violet-50, #fdfbff);
+  --lilac-logo-pip: var(--lilac-color-ink, #2a1d45);
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(:root:not([data-theme="light"])) .mark,
+  :global(:root:not([data-theme="light"])) .lockup {
+    --lilac-logo-ink: var(--lilac-color-logo-ink-dark, #b9a2f0);
+  }
+}
+
+:global([data-theme="dark"]) .mark,
+:global([data-theme="dark"]) .lockup {
+  --lilac-logo-ink: var(--lilac-color-logo-ink-dark, #b9a2f0);
+}
+
+/*
+ * Forced colours: the whole drawing is one fill per path, so flattening it to
+ * CanvasText would collapse the floret into a blob. Remapping the tokens keeps
+ * the petals as surfaces and the ink as the only drawn line.
+ */
+@media (forced-colors: active) {
+  .mark,
+  .lockup {
+    --lilac-logo-ink: CanvasText;
+    --lilac-logo-petal-1: Canvas;
+    --lilac-logo-petal-2: Canvas;
+    --lilac-logo-petal-3: Canvas;
+    --lilac-logo-petal-4: Canvas;
+    --lilac-logo-eye: Canvas;
+    --lilac-logo-pip: CanvasText;
+  }
+}
+
+/* Lockup */
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-family: var(--lilac-font-serif, "Libre Caslon Text", Georgia, serif);
+  font-size: 1.75rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  /* Inherited on purpose: the wordmark takes the colour of whatever it sits in,
+     so it follows the theme without a second token to keep in sync. */
+  color: inherit;
+}
+
+.lockupMark {
+  width: 1.3em;
+  height: 1.3em;
+  flex: none;
+}
+
+.word {
+  display: inline-block;
+}
+
+.dotless {
+  position: relative;
+  display: inline-block;
+}
+
+.tittle {
+  position: absolute;
+  left: 50%;
+  top: -0.07em;
+  width: 0.42em;
+  height: 0.42em;
+  transform: translateX(-50%);
+  overflow: visible;
+}
