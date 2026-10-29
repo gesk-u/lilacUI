@@ -1,0 +1,88 @@
+/* Was .plate + .hero-plate */
+.hero {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 0.65fr 1.35fr;
+  padding: 0 3.5rem 4.5rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+/* Was .hero-intro */
+.heroIntro {
+  align-self: center;
+  padding: 4rem 3rem 4rem 0;
+}
+
+.kicker {
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+  font-family: var(--serif);
+  font-style: italic;
+}
+
+/* Was .hero-intro h1 (line-height from your inline style) */
+.title {
+  margin-bottom: 2.2rem;
+  font-size: clamp(4rem, 6.8vw, 7rem);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.noWrap { white-space: nowrap; }
+
+.lede {
+  max-width: 28rem;
+  font-size: 1.08rem;
+}
+
+.getStarted {
+  display: grid;
+  gap: 1rem;
+  max-width: 28rem;
+  margin-top: 2rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Was .lilac-button */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Was the default .lilac-button colours */
+.primary {
+  background: var(--petal-1);
+  color: white;
+}
+.primary:hover { background: var(--ink); }
+
+/* Was .lilac-button--secondary */
+.outlined {
+  background: transparent;
+  color: var(--ink);
+}
+.outlined:hover { background: var(--selected); }
+
+@media (max-width: 800px) {
+  .hero {
+    display: block;
+    padding-inline: 1.25rem;
+  }
+  .heroIntro { padding: 4rem 0 2rem; }
+  .title { font-size: 4rem; }
+}

@@ -11,7 +11,7 @@ export function Layout() {
     <div>
       <Navbar logo={<LilacLogo size={28} title="Lilac UI"/>} />
       
-      <main className="content">
+      <main id="main">
         {/* Child components render inside here! */}
         <Outlet />
       </main>

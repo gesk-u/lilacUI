@@ -1,0 +1,36 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3rem;
+  padding-left: 1rem;
+  border: 1px solid var(--rule);
+}
+
+.code {
+  overflow-x: auto;
+  white-space: nowrap;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.copy {
+  align-self: stretch;
+  min-height: 3rem;
+  padding: 0 1rem;
+  border: 0;
+  border-left: 1px solid var(--rule);
+  background: var(--selected);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.copy:hover { background: var(--petal-3); }
+
+.status {
+  min-height: 1.25em;
+  margin: 0.4rem 0 0;
+  color: var(--secondary);
+  font-size: 0.9rem;
+}

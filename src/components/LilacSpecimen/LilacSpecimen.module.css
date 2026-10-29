@@ -1,0 +1,162 @@
+/* Was .specimen-plate */
+.specimen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem 0 1rem 2rem;
+  border-left: 1px solid var(--rule);
+}
+
+.figure {
+  position: relative;
+  aspect-ratio: 760 / 720;
+  margin: 0;
+  container-type: inline-size;
+}
+
+.drawing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Plant */
+.stem,
+.roots,
+.leafVein,
+.ground,
+.groundHatch { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.stem { stroke: var(--stem); stroke-width: 5; }
+.leaf { fill: var(--leaf); stroke: var(--stem); stroke-width: 2.5; }
+.leafVein { stroke: var(--stem); stroke-width: 1.5; }
+.ground { stroke: var(--ink); stroke-width: 2; }
+.groundHatch { stroke: var(--rule); stroke-width: 1.5; }
+.roots { stroke: var(--stem); stroke-width: 2.5; }
+
+.rootLabels text,
+.scaleBar text { fill: var(--ink); font-family: var(--mono); font-size: 17px; }
+
+/* Contrast scale */
+.scaleFrame { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.scaleMark { stroke: var(--ink); stroke-width: 2.5; }
+.scaleBar .scaleTitle { font-family: var(--serif); font-style: italic; }
+
+/* Leader lines */
+.leaders path {
+  fill: none;
+  stroke: var(--secondary);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.leaders circle { fill: var(--ink); }
+.leaders [data-active] path { stroke: var(--petal-1); stroke-width: 2.25; }
+
+/* Petals: mouse targets. The note buttons are the real controls. */
+.petal { cursor: pointer; }
+.petalLobe { stroke: var(--ink); stroke-width: 2.5; transition: transform 160ms ease; }
+.petal[data-principle="perceivable"] .petalLobe { fill: var(--petal-1); }
+.petal[data-principle="operable"] .petalLobe { fill: var(--petal-2); }
+.petal[data-principle="understandable"] .petalLobe { fill: var(--petal-3); }
+.petal[data-principle="robust"] .petalLobe { fill: var(--petal-4); stroke: var(--petal-outline); }
+/* fill-box makes the selected petal grow from its own centre */
+.petal[data-selected] .petalLobe { transform: scale(1.025); transform-box: fill-box; transform-origin: center; }
+.petalHalo { fill: none; stroke: var(--petal-outline); stroke-width: 1.5; }
+.petalCup,
+.petalVein { fill: none; stroke: white; stroke-linecap: round; stroke-width: 1.5; opacity: 0.4; }
+.petalRing,
+.petalGap { fill: none; stroke: transparent; }
+/* Ring the petal whose name has keyboard focus */
+.petal[data-focused] .petalRing { stroke: var(--ink); stroke-width: 16; }
+.petal[data-focused] .petalGap { stroke: white; stroke-width: 8; }
+.floretTube { fill: var(--paper); stroke: var(--ink); stroke-width: 2.5; }
+.floretThroat { fill: var(--petal-1); }
+
+/* Notes, drawn over the picture. The list ignores the mouse so clicks reach the petals;
+   only the buttons inside it take clicks. */
+.notes {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+.note {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  /* 26% keeps every note clear of its leader line (leaders start at 28% and 72%) */
+  width: 26%;
+  padding: 0.35rem 0.5rem;
+}
+.note[data-principle="perceivable"] { left: 1%; top: 10%; }
+.note[data-principle="operable"] { right: 1%; top: 10%; }
+.note[data-principle="understandable"] { left: 1%; top: 44%; }
+.note[data-principle="robust"] { right: 1%; top: 44%; }
+.note[data-principle="root"] { left: 1%; top: 74%; }
+.note[data-active] { background: var(--selected); }
+
+.noteName,
+.noteButton {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(0.8rem, 2.2cqw, 1rem);
+  font-weight: 400;
+  line-height: 1.3;
+}
+.noteButton {
+  min-height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.noteButton:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+/* Stretch the click area over the whole note, description included */
+.noteButton::after { content: ""; position: absolute; inset: 0; }
+/* Draw the focus ring around the whole note, so it doesn't cut through the description */
+.noteButton:focus-visible { outline: none; box-shadow: none; }
+.noteButton:focus-visible::after { outline: 0.2rem solid var(--ink); }
+.noteText {
+  color: var(--secondary);
+  font-size: clamp(0.72rem, 1.75cqw, 0.9rem);
+  line-height: 1.45;
+}
+
+/* Below the drawing */
+.tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.readerOutput {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: var(--ink);
+  color: white;
+}
+.readerOutput[hidden] { display: none; }
+.readerLabel { color: var(--petal-3); font-size: 0.75rem; }
+
+@media (max-width: 800px) {
+  .specimen { padding: 1rem 0; border-left: 0; }
+  .figure { display: flex; flex-direction: column; gap: 1rem; aspect-ratio: auto; }
+  /* The notes come first in the code, so put the drawing back on top visually */
+  .drawing { position: static; height: auto; aspect-ratio: 760 / 720; order: -1; }
+  .leaders { display: none; }
+  .notes { position: static; display: flex; flex-direction: column; }
+  /* relative (not static) so each button's stretched click area stays inside its own note */
+  .note[data-principle] { position: relative; inset: auto; width: 100%; }
+  .tools { flex-direction: column; align-items: flex-start; margin-top: 0; }
+}

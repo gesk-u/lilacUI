@@ -17,10 +17,10 @@
   --stem: #5f6b4c;
   --leaf: #a9b391;
 
-  --site-font-display: "Libre Caslon Display", "Libre Caslon Text", Georgia, "Times New Roman", serif;
-  --site-font-serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
-  --site-font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --site-font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --display: "Libre Caslon Display", "Libre Caslon Text", Georgia, "Times New Roman", serif;
+  --serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+  --sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 @layer base {
@@ -28,12 +28,15 @@
   @media (prefers-reduced-motion: no-preference) {
     html { scroll-behavior: smooth; }
   }
-  body { background: var(--paper); color: var(--body); font: 400 1rem/1.5 var(--site-font-sans); margin: 0; }
+  body { background: var(--paper); color: var(--body); font: 400 1rem/1.5 var(--sans); margin: 0; }
   h1, h2, h3, p { margin-top: 0; }
-  h1, h2, h3 { color: var(--ink); font-family: var(--site-font-serif); font-weight: 400; }
+  h1, h2, h3 { color: var(--ink); font-family: var(--serif); font-weight: 400; }
   a { color: var(--ink); text-underline-offset: .25em; }
   button, input, a { -webkit-tap-highlight-color: transparent; }
   button, a, input { min-height: 2.75rem; }
   :focus-visible { outline: .2rem solid var(--ink); outline-offset: .2rem; box-shadow: 0 0 0 .08rem white; }
   ::selection { background: var(--selected); color: var(--ink); }
 }
+
+main { margin: auto; max-width: 90rem; }
+main:focus { outline: none; }
