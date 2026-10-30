@@ -16,11 +16,52 @@
   --selected: #e2d7f3;
   --stem: #5f6b4c;
   --leaf: #a9b391;
+  --surface: #fdfbff;    /* raised fields: cards, switch track */
+  --on-accent: #ffffff;  /* text on --petal-1 and --ink fills */
+  color-scheme: light;
 
   --display: "Libre Caslon Display", "Libre Caslon Text", Georgia, "Times New Roman", serif;
   --serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
   --sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* Dark theme: follows the OS until the visitor picks one with the navbar switch,
+   which sets data-theme on <html>. Contrast checked: text >= 5.32:1, UI >= 3.70:1. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #16111f;
+    --ink: #f1ecf9;
+    --body: #d8d0e6;
+    --secondary: #b0a4c6;
+    --rule: #7d7096;
+    --petal-1: #a58be0;
+    --petal-2: #8f78c8;
+    --petal-outline: #9d86d8;
+    --selected: #3a2d55;
+    --stem: #9aa77f;
+    --leaf: #6f7a58;
+    --surface: #211a2e;
+    --on-accent: #16111f;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #16111f;
+  --ink: #f1ecf9;
+  --body: #d8d0e6;
+  --secondary: #b0a4c6;
+  --rule: #7d7096;
+  --petal-1: #a58be0;
+  --petal-2: #8f78c8;
+  --petal-outline: #9d86d8;
+  --selected: #3a2d55;
+  --stem: #9aa77f;
+  --leaf: #6f7a58;
+  --surface: #211a2e;
+  --on-accent: #16111f;
+  color-scheme: dark;
 }
 
 @layer base {
@@ -34,7 +75,7 @@
   a { color: var(--ink); text-underline-offset: .25em; }
   button, input, a { -webkit-tap-highlight-color: transparent; }
   button, a, input { min-height: 2.75rem; }
-  :focus-visible { outline: .2rem solid var(--ink); outline-offset: .2rem; box-shadow: 0 0 0 .08rem white; }
+  :focus-visible { outline: .2rem solid var(--ink); outline-offset: .2rem; box-shadow: 0 0 0 .08rem var(--paper); }
   ::selection { background: var(--selected); color: var(--ink); }
 }
 

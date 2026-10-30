@@ -68,7 +68,7 @@
   align-self: start;
   padding: 0.25rem 1rem;
   border: 1px solid var(--selected);
-  background: var(--petal-4);
+  background: var(--surface);
 }
 
 .spec dl {

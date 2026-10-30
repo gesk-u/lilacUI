@@ -5,6 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>lilacui</title>
+    <!-- Apply a saved theme before first paint, so the page doesn't flash the wrong one.
+         The key must match STORAGE_KEY in src/components/ThemeToggle/ThemeToggle.tsx -->
+    <script>
+      try {
+        var theme = localStorage.getItem('lilac-theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

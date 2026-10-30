@@ -79,7 +79,7 @@
 
 .primary {
   background: var(--petal-1);
-  color: white;
+  color: var(--on-accent);
 }
 .primary:hover { background: var(--ink); }
 

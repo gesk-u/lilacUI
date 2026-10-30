@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './Layout.module.css';
 import type { ReactNode } from "react";
+import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
 
 type NavbarProps = {
   logo: ReactNode;
@@ -22,6 +23,7 @@ export default function Navbar({ logo }: NavbarProps) {
                 >
                     GItHub
                 </a>
+                <ThemeToggle />
             </nav>
       </header>
     )

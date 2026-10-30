@@ -22,7 +22,7 @@
 
 .primary {
   background: var(--petal-1);
-  color: white;
+  color: var(--on-accent);
 }
 .primary:hover:not(:disabled) { background: var(--ink); }
 
@@ -47,5 +47,5 @@
 .button[data-state='focus'] {
   outline: 0.2rem solid var(--ink);
   outline-offset: 0.2rem;
-  box-shadow: 0 0 0 0.08rem white;
+  box-shadow: 0 0 0 0.08rem var(--paper);
 }
