@@ -15,15 +15,28 @@ type ChoiceGroupProps = {
   /* Rendered inside the fieldset, after the options (e.g. a live tally) */
   children?: ReactNode;
   className?: string;
+  disabled?: boolean;
+  /* Documentation previews only: draw the first option's focus ring without focus */
+  'data-state'?: 'focus';
 };
 
-export function ChoiceGroup({ legend, options, value, onChange, name, children, className }: ChoiceGroupProps) {
+export function ChoiceGroup({
+  legend,
+  options,
+  value,
+  onChange,
+  name,
+  children,
+  className,
+  disabled,
+  'data-state': dataState,
+}: ChoiceGroupProps) {
   function toggle(optionValue: string, checked: boolean) {
     onChange(checked ? [...value, optionValue] : value.filter((v) => v !== optionValue));
   }
 
   return (
-    <fieldset className={[styles.group, className].filter(Boolean).join(' ')}>
+    <fieldset className={[styles.group, className].filter(Boolean).join(' ')} disabled={disabled} data-state={dataState}>
       <legend className={styles.legend}>{legend}</legend>
       {options.map((option) => (
         <label key={option.value} className={styles.option}>

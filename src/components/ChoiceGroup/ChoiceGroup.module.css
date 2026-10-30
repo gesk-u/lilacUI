@@ -23,6 +23,16 @@
   cursor: pointer;
 }
 
+.group:disabled .option { color: var(--secondary); cursor: not-allowed; }
+.group:disabled .option input { cursor: not-allowed; }
+
+/* Forced focus for previews: same ring as the global :focus-visible */
+.group[data-state='focus'] .option:first-of-type input {
+  outline: 0.2rem solid var(--ink);
+  outline-offset: 0.2rem;
+  box-shadow: 0 0 0 0.08rem var(--paper);
+}
+
 .option input {
   width: 15px;
   height: 15px;

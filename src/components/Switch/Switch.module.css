@@ -10,11 +10,12 @@
   cursor: pointer;
 }
 
+/* --switch-scale lets a container enlarge the switch (e.g. a preview) without touching its proportions */
 .track {
   position: relative;
   flex: none;
-  width: 42px;
-  height: 23px;
+  width: calc(42px * var(--switch-scale, 1));
+  height: calc(23px * var(--switch-scale, 1));
   border: 1px solid var(--rule);
   border-radius: 999px;
   background: var(--surface);
@@ -23,19 +24,26 @@
 
 .knob {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 17px;
-  height: 17px;
+  top: calc(2px * var(--switch-scale, 1));
+  left: calc(2px * var(--switch-scale, 1));
+  width: calc(17px * var(--switch-scale, 1));
+  height: calc(17px * var(--switch-scale, 1));
   border-radius: 50%;
   background: var(--petal-2);
   transition: transform 0.14s ease, background 0.14s ease;
 }
 
 .switch[aria-checked='true'] .track { background: var(--petal-1); border-color: var(--petal-1); }
-.switch[aria-checked='true'] .knob { transform: translateX(19px); background: var(--paper); }
+.switch[aria-checked='true'] .knob { transform: translateX(calc(19px * var(--switch-scale, 1))); background: var(--paper); }
 
 .switch:disabled { color: var(--secondary); cursor: not-allowed; }
+
+/* Forced focus for previews: <Switch data-state="focus">, same ring as the global :focus-visible */
+.switch[data-state='focus'] {
+  outline: 0.2rem solid var(--ink);
+  outline-offset: 0.2rem;
+  box-shadow: 0 0 0 0.08rem var(--paper);
+}
 .switch:disabled .track { background: var(--selected); }
 .switch:disabled .knob { background: var(--rule); }
 
