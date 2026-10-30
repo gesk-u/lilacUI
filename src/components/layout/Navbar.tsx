@@ -14,7 +14,6 @@ export default function Navbar({ logo }: NavbarProps) {
             <nav className={styles.nav} aria-label="Primary navigation">
                 <Link className={styles.navLink}to="/">Home</Link>
                 <Link className={styles.navLink} to="/components">Components</Link>
-                <Link className={styles.navLink} to="/docs">Documentation</Link>
                 <Link className={styles.navLink} to="/customizer">
                     Customizer <span className={styles.badge}>Beta</span>
                 </Link>
