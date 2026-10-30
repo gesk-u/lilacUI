@@ -1,0 +1,33 @@
+.group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  margin-bottom: 0.5rem;
+  padding: 0;
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* The whole row is the target, 44px tall */
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.5625rem;
+  min-height: 2.75rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.option input {
+  width: 15px;
+  height: 15px;
+  min-height: 0;
+  margin: 0;
+  accent-color: var(--petal-1);
+  cursor: pointer;
+}
