@@ -19,6 +19,7 @@
   --leaf: #a9b391;
   --surface: #fdfbff;    /* raised fields: cards, switch track */
   --on-accent: #ffffff;  /* text on --petal-1 and --ink fills */
+  --radius: 0px;
   color-scheme: light;
 
   --display: "Libre Caslon Display", "Libre Caslon Text", Georgia, "Times New Roman", serif;

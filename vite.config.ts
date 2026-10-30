@@ -7,6 +7,11 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-  ]
-  
+  ],
+  server: {
+    // During development the Express backend (server/) answers /api
+    proxy: {
+      '/api': 'http://localhost:3001',
+    },
+  },
 })

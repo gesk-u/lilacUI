@@ -32,3 +32,16 @@
 .navLink:hover { 
   text-decoration: underline; 
 }
+
+/* Part of the link's name ("Customizer Beta"), so it is read, not just seen */
+.badge {
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--rule);
+  background: var(--selected);
+  color: var(--ink);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

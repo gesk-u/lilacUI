@@ -3,6 +3,7 @@
   max-width: 24rem;
   padding: 1.5rem;
   border: 1px solid var(--ink);
+  border-radius: var(--radius, 0);
   background: var(--paper);
   color: var(--body);
 }

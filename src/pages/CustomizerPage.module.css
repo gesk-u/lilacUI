@@ -1,0 +1,330 @@
+.page {
+  /* One radius scale for the whole tool: controls, then panels. The preview resets
+     --radius to the theme's own, so this never leaks into the user's design. */
+  --radius: 0.375rem;
+  --radius-panel: 0.5rem;
+  padding: 2.5rem 3.5rem 4.5rem;
+}
+
+/* Compact, so the preview and its contrast fit on screen without scrolling */
+.header {
+  max-width: 44rem;
+  margin-bottom: 1.75rem;
+}
+
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 1.6rem + 1.5vw, 2.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.badge {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--selected);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.intro {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Left: inputs. Right: preview, report, CSS. */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+.form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.label {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Section headings share one style: the serif used for Preview and Get the code */
+.sectionLabel {
+  margin: 0 0 0.25rem;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.hint {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 0.875rem;
+}
+
+.textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.textarea::placeholder { color: var(--secondary); }
+
+/* The request: one line plus its button, so Enter submits */
+.inputRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.input {
+  flex: 1 1 14rem;
+  min-height: 2.75rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.input::placeholder { color: var(--secondary); }
+
+.fineprint {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 0.8rem;
+}
+
+/* Example prompts: an even grid, never a lonely last chip */
+.examples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.examples legend {
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+
+.example {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  text-align: left;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.example:hover { background: var(--selected); }
+
+.more {
+  display: grid;
+  gap: 1rem;
+}
+
+.more[open] {
+  padding-bottom: 0.5rem;
+}
+
+/* Keeps its default display, so the open/closed triangle stays visible */
+.summary {
+  padding: 0.6rem 0;
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.more[open] .summary { margin-bottom: 1rem; }
+
+.more .field + .field { margin-top: 1rem; }
+
+/* File upload: the native input stays (keyboard, screen readers), styled as a button */
+.fileButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fileButton:hover { background: var(--selected); }
+
+.fileInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* The input is invisible, so its focus ring is drawn on the button */
+.fileButton:has(.fileInput:focus-visible) {
+  outline: 0.2rem solid var(--ink);
+  outline-offset: 0.2rem;
+}
+
+.status {
+  /* Empty most of the time; takes no room until there's something to say */
+  min-height: 0;
+  margin: 0;
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+.error {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ink);
+  border-left-width: 4px;
+  border-radius: var(--radius-panel);
+  color: var(--ink);
+}
+
+/* What was read from the CSS: colours and shape values apart, each with a sample */
+.readGroup {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.readList {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.readList li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.6rem;
+}
+
+.readList code {
+  font-family: var(--mono);
+}
+
+.swatch,
+.radiusSample {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--rule);
+}
+
+.swatch { border-radius: var(--radius); }
+.radiusSample { background: var(--selected); }
+
+.readRole {
+  min-width: 5.5rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.readSource {
+  color: var(--secondary);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
+.warning {
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--ink);
+  border-left-width: 4px;
+  border-radius: var(--radius-panel);
+  color: var(--ink);
+  font-size: 0.85rem;
+}
+
+.output {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+/* Spinner inside the Make it button while the AI works */
+.spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* No spinning for reduced motion; the label still says "Making it…" */
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; border-right-color: currentColor; opacity: 0.6; }
+}
+
+.empty {
+  margin: 0;
+  padding: 3rem 1.5rem;
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius-panel);
+  color: var(--secondary);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 800px) {
+  .page { padding: 3rem 1.25rem; }
+}

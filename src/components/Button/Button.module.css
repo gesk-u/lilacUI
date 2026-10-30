@@ -1,16 +1,45 @@
+/*
+ * The fill is painted on a layer behind the text (::before), not on the button itself.
+ * A shape (--button-clip) cuts only that layer, so the button stays a rectangle:
+ * its focus outline is never clipped and its click target stays full size.
+ *
+ * Shape variables, all optional:
+ *   --button-clip          clip-path for the fill, e.g. polygon(50% 0, 100% 100%, 0 100%)
+ *   --button-radius        corner radius (defaults to --radius)
+ *   --button-border-color  set transparent when a clip makes the rectangle border look wrong
+ *   --button-padding, --button-min-width, --button-max-width, --button-min-height
+ */
 .button {
+  position: relative;
+  /* Keeps the fill layer behind the text but inside the button */
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 2.75rem;
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--ink);
-  border-radius: 0;
+  min-width: var(--button-min-width, auto);
+  max-width: var(--button-max-width, none);
+  min-height: var(--button-min-height, 2.75rem);
+  padding: var(--button-padding, 0.7rem 1rem);
+  border: 1px solid var(--button-border-color, var(--ink));
+  border-radius: var(--button-radius, var(--radius, 0));
+  background: transparent;
   font: inherit;
   font-weight: 600;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--button-fill, transparent);
+  clip-path: var(--button-clip, none);
+  pointer-events: none;
 }
 
 .button:disabled {
@@ -21,31 +50,38 @@
 .icon { display: inline-flex; }
 
 .primary {
-  background: var(--petal-1);
+  --button-fill: var(--petal-1);
   color: var(--on-accent);
 }
-.primary:hover:not(:disabled) { background: var(--ink); }
+.primary:hover:not(:disabled) { --button-fill: var(--accent-hover, var(--ink)); }
 
+/* Reset explicitly: custom properties inherit, and these must not pick up a parent's fill */
 .secondary {
-  background: transparent;
+  --button-fill: transparent;
   color: var(--ink);
 }
 
 .quiet {
-  background: transparent;
-  border-color: transparent;
+  --button-fill: transparent;
+  --button-border-color: transparent;
   color: var(--ink);
 }
 
 .secondary:hover:not(:disabled),
-.quiet:hover:not(:disabled) { background: var(--selected); }
+.quiet:hover:not(:disabled) { --button-fill: var(--selected); }
 
 /* Forced states, for documentation previews: <Button data-state="hover"> */
-.primary[data-state='hover'] { background: var(--ink); }
+.primary[data-state='hover'] { --button-fill: var(--accent-hover, var(--ink)); }
 .secondary[data-state='hover'],
-.quiet[data-state='hover'] { background: var(--selected); }
+.quiet[data-state='hover'] { --button-fill: var(--selected); }
 .button[data-state='focus'] {
   outline: 0.2rem solid var(--ink);
   outline-offset: 0.2rem;
   box-shadow: 0 0 0 0.08rem var(--paper);
+}
+
+/* Windows contrast themes: drop the decorative fill and shape, keep a plain system button */
+@media (forced-colors: active) {
+  .button::before { display: none; }
+  .button { border-color: ButtonText; }
 }
