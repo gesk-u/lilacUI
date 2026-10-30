@@ -16,6 +16,7 @@ export function SwitchSpecimen() {
 
   return (
     <Specimen
+      docsHref="/components#switch"
       title="Switch"
       description="Takes effect the moment it moves. No confirm step, so the label says what turning it on does."
       spec={[

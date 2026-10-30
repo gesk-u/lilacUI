@@ -28,6 +28,24 @@
   line-height: 1.45;
 }
 
+/* Names the component, so every link reads differently out of context */
+.docsLink {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 2.75rem;
+  margin-top: 0.5rem;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+}
+
+.docsLink:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
 /* Stage column */
 .stage {
   display: flex;
