@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: center;
   padding: 1.5rem 0 1rem 2rem;
-  border-left: 1px solid var(--rule);
 }
 
 .figure {
@@ -150,7 +149,7 @@
 .readerLabel { color: var(--petal-3); font-size: 0.75rem; }
 
 @media (max-width: 800px) {
-  .specimen { padding: 1rem 0; border-left: 0; }
+  .specimen { padding: 1rem 0; }
   .figure { display: flex; flex-direction: column; gap: 1rem; aspect-ratio: auto; }
   /* The notes come first in the code, so put the drawing back on top visually */
   .drawing { position: static; height: auto; aspect-ratio: 760 / 720; order: -1; }
