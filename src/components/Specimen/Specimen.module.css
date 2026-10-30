@@ -1,0 +1,122 @@
+.specimen {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(0, 2.3fr) minmax(190px, 1.1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Identity column */
+.ident {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.65rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.description {
+  max-width: 30ch;
+  margin: 0.375rem 0 0;
+  color: var(--secondary);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+/* Stage column */
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+  min-width: 0;
+}
+
+.states {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.625rem 1.375rem;
+}
+
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4375rem;
+}
+
+.caption {
+  color: var(--secondary);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.note {
+  min-height: 1.2em;
+  margin: 0;
+  color: var(--secondary);
+  font-size: 0.8rem;
+}
+
+/* Spec column: one shared label column, so values line up */
+.spec {
+  align-self: start;
+  padding: 0.25rem 1rem;
+  border: 1px solid var(--selected);
+  background: var(--surface);
+}
+
+.spec dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.25rem;
+  margin: 0;
+}
+
+.specRow { display: contents; }
+
+.spec dt,
+.spec dd {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--selected);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.specRow:last-child dt,
+.specRow:last-child dd { border-bottom: 0; }
+
+.spec dt { color: var(--secondary); }
+
+.spec dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-family: var(--mono);
+}
+
+.keys {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.keys kbd {
+  padding: 1px 6px;
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+@media (max-width: 860px) {
+  .specimen { grid-template-columns: 1fr; gap: 1.125rem; padding: 1.5rem 0; }
+}

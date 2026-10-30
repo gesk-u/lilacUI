@@ -1,0 +1,62 @@
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 2px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.track {
+  position: relative;
+  flex: none;
+  width: 42px;
+  height: 23px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--surface);
+  transition: background 0.14s ease;
+}
+
+.knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--petal-2);
+  transition: transform 0.14s ease, background 0.14s ease;
+}
+
+.switch[aria-checked='true'] .track { background: var(--petal-1); border-color: var(--petal-1); }
+.switch[aria-checked='true'] .knob { transform: translateX(19px); background: var(--paper); }
+
+.switch:disabled { color: var(--secondary); cursor: not-allowed; }
+.switch:disabled .track { background: var(--selected); }
+.switch:disabled .knob { background: var(--rule); }
+
+/* Forced colours strip backgrounds, which would erase the knob and the on state.
+   Opt the parts out and repaint them with system colours, so they follow the user's theme. */
+@media (forced-colors: active) {
+  .track,
+  .knob { forced-color-adjust: none; }
+
+  .track { background: Canvas; border-color: ButtonText; }
+  .knob { background: ButtonText; }
+
+  .switch[aria-checked='true'] .track { background: Highlight; border-color: Highlight; }
+  .switch[aria-checked='true'] .knob { background: HighlightText; }
+
+  .switch:disabled { color: GrayText; }
+  .switch:disabled .track { background: Canvas; border-color: GrayText; }
+  .switch:disabled .knob { background: GrayText; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .knob { transition: none; }
+}

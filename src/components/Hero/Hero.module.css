@@ -1,0 +1,104 @@
+/* Was .plate + .hero-plate */
+.hero {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  grid-template-rows: auto 1fr;
+  padding: 4rem 3.5rem 4.5rem;
+  container-type: inline-size;
+}
+
+/* The h1 is not a box — its two spans are the grid items */
+.title {
+  display: contents;
+}
+
+.titleLine1 {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin-bottom: 3rem;
+  font-size: 7.5cqi;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+}
+
+.titleLine2 {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  margin-left: 0;
+  font-size: 6cqi;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.heroIntro {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: top;
+  padding-top: 12rem;
+  padding-right: 3rem;
+}
+
+.noWrap { white-space: nowrap; }
+
+.lede {
+  max-width: 32rem;
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+
+.getStarted {
+  display: grid;
+  gap: 1rem;
+  max-width: 32rem;
+  margin-top: 2rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Was .lilac-button */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary {
+  background: var(--petal-1);
+  color: var(--on-accent);
+}
+.primary:hover { background: var(--ink); }
+
+.outlined {
+  background: transparent;
+  color: var(--ink);
+}
+.outlined:hover { background: var(--selected); }
+
+@media (max-width: 800px) {
+  .hero { display: block; padding: 3rem 1.25rem; }
+  .title { display: block; }
+  .titleLine1,
+  .titleLine2 {
+    display: block;
+    margin: 0 0 1rem;
+    font-size: 3.5rem;
+    white-space: normal;
+  }
+  .titleLine2 { margin-bottom: 2rem; }
+  .heroIntro { padding: 0 0 2rem; }
+}

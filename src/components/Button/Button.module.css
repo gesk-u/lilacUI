@@ -1,0 +1,51 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.52;
+}
+
+.icon { display: inline-flex; }
+
+.primary {
+  background: var(--petal-1);
+  color: var(--on-accent);
+}
+.primary:hover:not(:disabled) { background: var(--ink); }
+
+.secondary {
+  background: transparent;
+  color: var(--ink);
+}
+
+.quiet {
+  background: transparent;
+  border-color: transparent;
+  color: var(--ink);
+}
+
+.secondary:hover:not(:disabled),
+.quiet:hover:not(:disabled) { background: var(--selected); }
+
+/* Forced states, for documentation previews: <Button data-state="hover"> */
+.primary[data-state='hover'] { background: var(--ink); }
+.secondary[data-state='hover'],
+.quiet[data-state='hover'] { background: var(--selected); }
+.button[data-state='focus'] {
+  outline: 0.2rem solid var(--ink);
+  outline-offset: 0.2rem;
+  box-shadow: 0 0 0 0.08rem var(--paper);
+}

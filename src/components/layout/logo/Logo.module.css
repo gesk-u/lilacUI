@@ -18,6 +18,7 @@
   --lilac-logo-pip: var(--lilac-color-ink, #2a1d45);
 }
 
+/* Same conditions as the page's dark theme in index.css, so ink and paper always switch together */
 @media (prefers-color-scheme: dark) {
   :global(:root:not([data-theme="light"])) .mark,
   :global(:root:not([data-theme="light"])) .lockup {

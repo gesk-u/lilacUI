@@ -1,0 +1,27 @@
+.dialog {
+  width: calc(100% - 2rem);
+  max-width: 24rem;
+  padding: 1.5rem;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--body);
+}
+
+.dialog::backdrop { background: rgb(42 29 69 / 0.5); }
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+
+.description {
+  margin: 0 0 1.25rem;
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.625rem;
+}
