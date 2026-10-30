@@ -13,6 +13,7 @@
   --petal-3: #bca9de;
   --petal-4: #fdfbff;
   --petal-outline: #7e66b5;
+  --petal-4-line: #7e66b5;  /* fixed in both themes, like the white petal it draws on: 4.58:1 */
   --selected: #e2d7f3;
   --stem: #5f6b4c;
   --leaf: #a9b391;

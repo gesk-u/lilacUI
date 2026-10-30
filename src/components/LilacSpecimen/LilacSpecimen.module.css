@@ -59,12 +59,14 @@
 .petal[data-principle="perceivable"] .petalLobe { fill: var(--petal-1); }
 .petal[data-principle="operable"] .petalLobe { fill: var(--petal-2); }
 .petal[data-principle="understandable"] .petalLobe { fill: var(--petal-3); }
-.petal[data-principle="robust"] .petalLobe { fill: var(--petal-4); stroke: var(--petal-outline); }
+.petal[data-principle="robust"] .petalLobe { fill: var(--petal-4); stroke: var(--petal-4-line); }
 /* fill-box makes the selected petal grow from its own centre */
 .petal[data-selected] .petalLobe { transform: scale(1.025); transform-box: fill-box; transform-origin: center; }
 .petalHalo { fill: none; stroke: var(--petal-outline); stroke-width: 1.5; }
 .petalCup,
 .petalVein { fill: none; stroke: white; stroke-linecap: round; stroke-width: 1.5; opacity: 0.4; }
+/* White lines vanish on the white petal, so draw its cup and vein in its outline colour */
+.petal[data-principle="robust"] :is(.petalCup, .petalVein) { stroke: var(--petal-4-line); opacity: 0.3; }
 .petalRing,
 .petalGap { fill: none; stroke: transparent; }
 /* Ring the petal whose name has keyboard focus */
