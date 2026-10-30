@@ -1,0 +1,135 @@
+/*
+ * VS Code Dark+ colours on its #1e1e1e editor background. Every token colour was checked
+ * against that background and passes WCAG AA for text (4.5:1 or more); the one VS Code
+ * grey that didn't (tag brackets, #808080 at 4.22:1) is lightened to #9d9d9d (6.15:1).
+ * The panel stays dark in both site themes, like an editor.
+ */
+.editor {
+  overflow: hidden;
+  border: 1px solid #3c3c3c;
+  border-radius: 0.5rem;
+  background: #1e1e1e;
+  color: #d4d4d4;
+}
+
+.tabs {
+  display: flex;
+  background: #252526;
+  border-bottom: 1px solid #3c3c3c;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  padding: 0.3rem 0.5rem;
+}
+
+/* Editor-chrome button for the dark tab bar: text #e6e6e6 on #2d2d2d is 11:1, border #8a8a8a on the bar passes 3:1 */
+.tabButton {
+  min-height: 2rem;
+  padding: 0 0.85rem;
+  border: 1px solid #8a8a8a;
+  border-radius: 0.375rem;
+  background: #2d2d2d;
+  color: #e6e6e6;
+  font: 600 0.8rem/1 var(--sans);
+  cursor: pointer;
+}
+
+.tabButton:hover { background: #3a3a3a; }
+
+.tabButton:focus-visible {
+  outline: 0.2rem solid #569cd6;
+  outline-offset: 0.15rem;
+  box-shadow: none;
+}
+
+.tab {
+  padding: 0.45rem 1rem;
+  border-top: 2px solid #569cd6;
+  background: #1e1e1e;
+  color: #cccccc;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+}
+
+/* One scroll area for both columns, so line numbers stay level with their lines */
+.body {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  max-height: 26rem;
+  overflow: auto;
+}
+
+.body:focus-visible {
+  outline: 0.2rem solid #569cd6;
+  outline-offset: -0.2rem;
+}
+
+.gutter,
+.code {
+  margin: 0;
+  padding: 0.9rem 0;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  tab-size: 2;
+}
+
+/* Stays put while the code scrolls sideways */
+.gutter {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  padding-inline: 1rem 0.75rem;
+  background: #1e1e1e;
+  color: #858585;
+  text-align: right;
+  user-select: none;
+}
+
+.code {
+  padding-inline: 0.5rem 1.25rem;
+}
+
+/* Tokens: Prism's class names, mapped to VS Code Dark+ */
+.code :global(.token.comment),
+.code :global(.token.prolog),
+.code :global(.token.doctype),
+.code :global(.token.cdata) { color: #6a9955; }
+
+.code :global(.token.punctuation),
+.code :global(.token.operator) { color: #d4d4d4; }
+
+.code :global(.token.tag) { color: #569cd6; }
+.code :global(.token.tag .token.punctuation) { color: #9d9d9d; }
+.code :global(.token.attr-name) { color: #9cdcfe; }
+.code :global(.token.attr-value),
+.code :global(.token.attr-value .token.punctuation),
+.code :global(.token.string),
+.code :global(.token.template-string) { color: #ce9178; }
+
+.code :global(.token.keyword),
+.code :global(.token.boolean),
+.code :global(.token.important) { color: #569cd6; }
+.code :global(.token.atrule),
+.code :global(.token.rule) { color: #c586c0; }
+
+.code :global(.token.selector) { color: #d7ba7d; }
+.code :global(.token.property) { color: #9cdcfe; }
+.code :global(.token.number),
+.code :global(.token.unit) { color: #b5cea8; }
+.code :global(.token.function) { color: #dcdcaa; }
+.code :global(.token.class-name) { color: #4ec9b0; }
+
+/* ${...} inside template strings reads as code again */
+.code :global(.token.interpolation) { color: #9cdcfe; }
+.code :global(.token.interpolation-punctuation) { color: #569cd6; }
+
+/* Windows contrast themes: let system colours take over */
+@media (forced-colors: active) {
+  .editor { border-color: CanvasText; }
+  .tab { border-top-color: Highlight; }
+}
