@@ -1,44 +1,58 @@
 /* Was .plate + .hero-plate */
 .hero {
-  align-items: center;
   display: grid;
-  grid-template-columns: 0.65fr 1.35fr;
-  padding: 0 3.5rem 4.5rem;
+  grid-template-columns: 0.85fr 1.15fr;
+  grid-template-rows: auto 1fr;
+  padding: 4rem 3.5rem 4.5rem;
   border-bottom: 1px solid var(--ink);
+  container-type: inline-size;
 }
 
-/* Was .hero-intro */
-.heroIntro {
-  align-self: center;
-  padding: 4rem 3rem 4rem 0;
-}
-
-.kicker {
-  margin-bottom: 1.5rem;
-  color: var(--secondary);
-  font-family: var(--serif);
-  font-style: italic;
-}
-
-/* Was .hero-intro h1 (line-height from your inline style) */
+/* The h1 is not a box — its two spans are the grid items */
 .title {
-  margin-bottom: 2.2rem;
-  font-size: clamp(4rem, 6.8vw, 7rem);
+  display: contents;
+}
+
+.titleLine1 {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin-bottom: 3rem;
+  font-size: 7.5cqi;
   letter-spacing: -0.055em;
-  line-height: 0.98;
+  line-height: 0.95;
+}
+
+.titleLine2 {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  margin-left: 0;
+  font-size: 6cqi;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.heroIntro {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: top;
+  padding-top: 12rem;
+  padding-right: 3rem;
 }
 
 .noWrap { white-space: nowrap; }
 
 .lede {
-  max-width: 28rem;
-  font-size: 1.08rem;
+  max-width: 32rem;
+  font-size: 1.25rem;
+  line-height: 1.55;
 }
 
 .getStarted {
   display: grid;
   gap: 1rem;
-  max-width: 28rem;
+  max-width: 32rem;
   margin-top: 2rem;
 }
 
@@ -64,14 +78,12 @@
   cursor: pointer;
 }
 
-/* Was the default .lilac-button colours */
 .primary {
   background: var(--petal-1);
   color: white;
 }
 .primary:hover { background: var(--ink); }
 
-/* Was .lilac-button--secondary */
 .outlined {
   background: transparent;
   color: var(--ink);
@@ -79,10 +91,15 @@
 .outlined:hover { background: var(--selected); }
 
 @media (max-width: 800px) {
-  .hero {
+  .hero { display: block; padding: 3rem 1.25rem; }
+  .title { display: block; }
+  .titleLine1,
+  .titleLine2 {
     display: block;
-    padding-inline: 1.25rem;
+    margin: 0 0 1rem;
+    font-size: 3.5rem;
+    white-space: normal;
   }
-  .heroIntro { padding: 4rem 0 2rem; }
-  .title { font-size: 4rem; }
+  .titleLine2 { margin-bottom: 2rem; }
+  .heroIntro { padding: 0 0 2rem; }
 }
