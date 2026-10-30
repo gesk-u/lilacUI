@@ -39,3 +39,13 @@
 
 .secondary:hover:not(:disabled),
 .quiet:hover:not(:disabled) { background: var(--selected); }
+
+/* Forced states, for documentation previews: <Button data-state="hover"> */
+.primary[data-state='hover'] { background: var(--ink); }
+.secondary[data-state='hover'],
+.quiet[data-state='hover'] { background: var(--selected); }
+.button[data-state='focus'] {
+  outline: 0.2rem solid var(--ink);
+  outline-offset: 0.2rem;
+  box-shadow: 0 0 0 0.08rem white;
+}
