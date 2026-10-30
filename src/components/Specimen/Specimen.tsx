@@ -1,4 +1,5 @@
 import { useId, type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Specimen.module.css';
 
 export type SpecEntry = {
@@ -10,12 +11,14 @@ type SpecimenProps = {
   title: string;
   description: ReactNode;
   spec: SpecEntry[];
+  /* Its section on the Components page, e.g. /components#button */
+  docsHref?: string;
   /* The live component(s), shown in the middle column */
   children: ReactNode;
 };
 
 /* One row of the components plate: identity, live stage, spec table */
-export function Specimen({ title, description, spec, children }: SpecimenProps) {
+export function Specimen({ title, description, spec, docsHref, children }: SpecimenProps) {
   const titleId = useId();
 
   return (
@@ -23,6 +26,11 @@ export function Specimen({ title, description, spec, children }: SpecimenProps) 
       <div className={styles.ident}>
         <h3 id={titleId} className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>
+        {docsHref && (
+          <Link className={styles.docsLink} to={docsHref}>
+            {title} code and docs <span aria-hidden="true">→</span>
+          </Link>
+        )}
       </div>
 
       <div className={styles.stage}>{children}</div>

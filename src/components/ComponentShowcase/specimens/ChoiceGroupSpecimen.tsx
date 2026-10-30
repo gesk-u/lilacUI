@@ -14,6 +14,7 @@ export function ChoiceGroupSpecimen() {
 
   return (
     <Specimen
+      docsHref="/components#choice-group"
       title="Choice group"
       description="A fieldset so screen readers announce the question before each option. The tally is live."
       spec={[

@@ -4,6 +4,7 @@ import { Keys, Specimen, SpecimenState, SpecimenStates } from '../../Specimen/Sp
 export function ButtonSpecimen() {
   return (
     <Specimen
+      docsHref="/components#button"
       title="Button"
       description="Four states, left to right. Hover and focus are shown forced so you can read them side by side."
       spec={[

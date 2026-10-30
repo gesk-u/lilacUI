@@ -16,6 +16,7 @@ export function DialogSpecimen() {
 
   return (
     <Specimen
+      docsHref="/components#dialog"
       title="Dialog"
       description="Open it and try to Tab out. Focus is held inside, and Escape returns it to the button you came from."
       spec={[
