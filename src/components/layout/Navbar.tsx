@@ -15,6 +15,9 @@ export default function Navbar({ logo }: NavbarProps) {
                 <Link className={styles.navLink}to="/">Home</Link>
                 <Link className={styles.navLink} to="/components">Components</Link>
                 <Link className={styles.navLink} to="/docs">Documentation</Link>
+                <Link className={styles.navLink} to="/customizer">
+                    Customizer <span className={styles.badge}>Beta</span>
+                </Link>
                 <a
                     className={styles.navLink}
                     href="https://github.com/gesk-u"
